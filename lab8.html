@@ -5,9 +5,13 @@
   <title>Lab 8 </title>
 </head>
 <body>
+    <h1>Exercise no 1 Answer is in the console</h1>
+    <h1>Exercise no 2 Answer is in the console</h1>
+    <h1>Exercise no 3 Answer is in the console</h1>
+    <h1>Exercise no 4 Answer is in the console</h1>
 </body>
 <script>
-  
+  //Exercise no 1
   const  filterWords=(str, bannedWords)=> {
    
     const words = str.split(' ');
@@ -16,9 +20,114 @@
     const result = filteredWords.join(' ');
     return result;
   }
+ 
+  //Exercise no 2
+  Array.prototype.bubbleSort = function() {
+    let value;
+    do {
+        value = false;
+      for (let i = 0; i < this.length - 1; i++) {
+        if (this[i] > this[i + 1]) {
+          [this[i], this[i + 1]] = [this[i + 1], this[i]];
+          value = true;
+        }
+      }
+    } while (value);
+    return this;
+  };
+//Exercise no 3
+function Person(name) {
+    this.name = name;
+  }
+
+  function Teacher(name) {
+    Person.call(this, name);
+  }
+
+  Teacher.prototype = Object.create(Person.prototype);
+
+  Teacher.prototype.teach = function(subject) {
+    console.log("Exercise no 3 Answer:",this.name + " is now teaching " + subject + ".");
+  };
+
+//Exercise no 4: Object prototype
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Person.prototype.greeting = function() {
+    console.log("Exercise no 4 Answer Object prototype:","Greetings, my name is " + this.name + " and I am " + this.age + " years old.");
+  };
+  Person.prototype.salute = function() {
+    console.log("Exercise no 4 Answer Object prototype:","Good morning!, and in case I don't see you, good afternoon, good evening, and good night!");
+  };
+  function Student(name, age, major) {
+    Person.call(this, name, age);
+    this.major = major;
+  }
+  Student.prototype = Object.create(Person.prototype);
+  Student.prototype.greeting = function() {
+    console.log("Exercise no 4 Answer Object prototype:","Hey, my name is " + this.name + " and I am studying " + this.major + ".");
+  };
+  function Professor(name, age, department) {
+    Person.call(this, name, age);
+    this.department = department;
+  }
+  Professor.prototype = Object.create(Person.prototype);
+  Professor.prototype.greeting = function() {
+    console.log("Exercise no 4 Answer Object prototype:","Good day, my name is " + this.name + " and I am in the " + this.department + " department.");
+  };
+  const professor1 = new Professor("Sami Taha", 35, "WAP");
+  const student1 = new Student("John Doe", 30, "Computer Science");
+  professor1.greeting(); 
+  professor1.salute(); 
+  student1.greeting();
+  student1.salute();     
+//Exercise no 4: Function Constructor Approach
+function Person2(name, age) {
+    this.name = name;
+    this.age = age;
+    this.greeting = function() {
+      console.log("Exercise no 4 Answer Function Constructor:","Greetings, my name is " + this.name + " and I am " + this.age + " years old.");
+    };
+    this.salute = function() {
+      console.log("Exercise no 4 Answer Function Constructor:","Good morning!, and in case I don't see you, good afternoon, good evening, and good night!");
+    };
+  }
+  function Student2(name, age, major) {
+    Person2.call(this, name, age);
+    this.major = major;
+    this.greeting = function() {
+      console.log("Exercise no 4 Answer Function Constructor:","Hey, my name is " + this.name + " and I am studying " + this.major + ".");
+    };
+  }
+
+  function Professor2(name, age, department) {
+    Person2.call(this, name, age);
+    this.department = department;
+    this.greeting = function() {
+      console.log("Exercise no 4 Answer Function Constructor:","Good day, my name is " + this.name + " and I am in the " + this.department + " department.");
+    };
+  }
+  const professor2 = new Professor2("Sami Taha", 35, "Computer Science");
+  const student2 = new Student2("Muhammad Rehan", 30, "Computer Science");
+  professor2.greeting(); 
+  professor2.salute();  
+  student2.greeting();
+  student2.salute(); 
+
+  //console outputs
+  //Exercise no 1
   const inputString = "This house is not nice!";
   const bannedWordsList = ['not'];
   const outputString = filterWords(inputString, bannedWordsList);
-  console.log(outputString); 
+  console.log("Exercise no 1 Answer:",outputString); 
+  //Exercise no 2
+  const input = [6, 4, 0, 3, -2, 1];
+  input.bubbleSort();
+  console.log("Exercise no 2 Answer:",input);
+  //Exercise no 3
+ const res = new Teacher("Sami Taha");
+ res.teach("WAP"); 
 </script>
 </html>
